@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Task Manager</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+	<link href="https://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" rel="stylesheet" />
+	
+</head>
+<body bgcolor="#F3FAB6">
+<style>
+ol {
+    list-style-type:none;
+    padding:0px;
+    margin:0px;
+}
+.selected {
+    background-color:#ccccb3;
+}
+</style>
+
+	<div class="w3-container">
+	  <div class="w3-display-topmiddle; w3-container w3-yellow" style="margin-top: 2cm; height: 60px; width: 100%	">
+	  <p>
+	  </p>
+	  <center> <input type="text" id="mydate" />
+	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	  <form method="post" action="/DataStoreCreation">
+	  <input type="submit" name="submit" value="Log Out" />
+	  </form>
+	 </center>
+	  </div>
+	<script >
+	$("#mydate").datepicker().datepicker("setDate", new Date());
+	</script>
+
+		<div class="w3-card-4"
+			style="width: 23%; float: left; margin-right: 80px; margin-left: 120px; margin-top: 120px">
+			<header class="w3-container w3-blue">
+				<h1>
+					<center>TO-DO LIST</center>
+				</h1>
+				<input type="text" name="task">
+
+				<div style="float: right">
+					<button id="addBtn">ADD</button>
+				</div>
+			</header>
+
+			<div class="w3-container " style="float: left; width: 100%">
+				<p>
+				</p>
+				<ol id="todo"></ol>
+				<script>
+				$(document).ready(function() {
+						$('#addBtn').click(function() {
+						var toAdd = $('input[name=task]').val();
+						$('#todo').append('<li>' + toAdd+ '</li>');
+						});
+						$('input').focus(function() {
+							$(this).val('');
+					     });
+						$('#delBtn').click(function() {
+							$('#todo .selected').remove();
+							});
+						$('#moveLeft').click(function() {
+							$('#doing').append(	$('#todo .selected').removeClass('selected'));
+						});
+						$('#moveDone').click(function() {
+							$('#done').append(	$('#todo .selected').removeClass('selected'));
+						});
+				});
+				</script>
+
+			</div>
+
+			<footer class="w3-container w3-blue">
+				<p></p>
+				<button id="delBtn" style="float: center"> &nbsp&nbsp&nbsp &#9932 &nbsp&nbsp&nbsp</button>
+				<button id="moveLeft" style="float: center"> &nbsp&nbsp&nbsp &#8811  &nbsp&nbsp&nbsp</button>
+				<button id="moveDone" style="float: center"> &nbsp&nbsp&nbsp Done  &nbsp&nbsp&nbsp</button>
+				<p></p>
+			</footer>
+		</div>
+
+		<div class="w3-card-4"
+			style="width: 23%; float: left; margin-right: 80px; margin-top: 120px">
+			<header class="w3-container w3-grey">
+				<h1>
+					<center>DOING</center>
+				</h1>
+				<input type="text" name="doing">
+				<div style="float: right">
+					<button id="addBtn1">ADD</button>
+				</div>
+			</header>
+
+			<div class="w3-container " style="float: left; width:100% ">
+			<p>
+			</p>
+				<ol id="doing"></ol>
+				<script>
+				
+			$(document).ready(function() {
+							$('#addBtn1').click(function() {
+							var toAdd1 = $('input[name=doing]').val();
+							$('#doing') .append('<li>'+ toAdd1 + '</li>');
+						});
+					$('input').focus(function() {
+							$(this).val('');
+						});
+					$(document).on('click', 'li', function() {
+						   $(this).toggleClass('selected');
+						});
+					$('#delBtn1').click(function() {
+						$('#doing .selected').remove();
+						});
+					$('#moveLeft1').click(function() {
+							
+							$('#done').append($('#doing .selected').removeClass( 'selected'));
+							
+						});
+					$('#moveRight1').click(function() {
+						
+						$('#todo').append($('#doing .selected').removeClass( 'selected'));
+						
+					});
+			});
+				</script>
+			</div>
+
+			<footer class="w3-container w3-grey">
+				<p>
+				</p>
+				
+				
+				<button id="moveRight1" style="float: center; margin-left: 20px ">  &nbsp&nbsp&nbsp &#8810  &nbsp&nbsp&nbsp</button>
+				<button id="delBtn1" style="float: center"> &nbsp&nbsp&nbsp &#9932 &nbsp&nbsp&nbsp</button>
+				<button id="moveLeft1" style="float: center; margin-right: 20px"> &nbsp&nbsp&nbsp &#8811  &nbsp&nbsp&nbsp</button>
+				<p>
+				</p>
+			</footer>
+		</div>
+
+		<div class="w3-card-4"
+			style="width: 23%; float: left;  margin-top: 120px">
+			<header class="w3-container w3-red">
+				<h1>
+					<center>DONE</center>
+				</h1>
+			</header>
+
+			<div class="w3-container" style="float: left">
+				<input type="text" name="done">
+				<div style="float: right">
+					<button id="addBtn2">ADD</button>
+				</div>
+				<p>
+				</p>
+				<ol id="done"></ol>
+				<script>
+					$(document).ready(function() {
+						$('#addBtn2').click(function() {
+							var toAdd2 = $('input[name=done]').val();
+							$('#done').append('<li>' + toAdd2 + '</li>');
+						});
+						$('input').focus(function() {
+							$(this).val('');
+						});
+						$(document).on('dblclick', 'li', function() {
+							$('#done .selected').remove();
+						});
+						$('#delBtn2').click(function() {
+							$('#done .selected').remove();
+							});
+						$('#moveLeft2').click(function() {
+								
+								$('#doing').append($('#done .selected').removeClass( 'selected'));
+								
+							});
+						$('#moveTodo').click(function() {
+							$('#todo').append(	$('#done .selected').removeClass('selected'));
+						});
+					});
+				</script>
+			</div>
+
+
+			<footer class="w3-container w3-red">
+				<p></p>
+				<center>
+				<button id="moveLeft2" style="float: center ">  &nbsp&nbsp&nbsp &#8810  &nbsp&nbsp&nbsp</button>
+				<button id="delBtn2" style="float: center"> &nbsp&nbsp&nbsp &#9932 &nbsp&nbsp&nbsp</button>
+				<button id="moveTodo" style="float: center"> &nbsp&nbsp&nbsp To-Do &nbsp&nbsp&nbsp</button>
+				
+				</center>
+				<p>
+				</p>
+			</footer>
+		</div>
+	</div>
+
+
+</body>
+</html>

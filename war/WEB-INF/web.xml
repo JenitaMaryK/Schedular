@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+	<servlet>
+		<servlet-name>Loginform</servlet-name>
+		<servlet-class>login.Login</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Loginform</servlet-name>
+		<url-pattern>/Login</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>Servlet1</servlet-name>
+		<servlet-class>login.Validate</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Servlet1</servlet-name>
+		<url-pattern>/Validate</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>ServletDS</servlet-name>
+		<servlet-class>login.DataStoreCreation</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ServletDS</servlet-name>
+		<url-pattern>/DataStoreCreation</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>Servlet2</servlet-name>
+		<servlet-class>login.Profile</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Servlet2</servlet-name>
+		<url-pattern>/Profile</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>Servlet3</servlet-name>
+		<servlet-class>login.Lgout</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Servlet3</servlet-name>
+		<url-pattern>/Lgout</url-pattern>
+	</servlet-mapping>
+	
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+</web-app>
